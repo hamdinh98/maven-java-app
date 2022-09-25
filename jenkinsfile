@@ -14,6 +14,7 @@ pipeline {
         {
             steps{
                echo "building docker images"
+               sh "docker"
                sh "docker build -t my-repo/my-repo:java-1.0 ."  
               
             }
