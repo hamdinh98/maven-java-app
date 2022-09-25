@@ -20,13 +20,16 @@ pipeline {
         }
         stage("pushing docker image to dockerhub")
         {
-            echo "pushing docker images ... "
+         steps{
+         echo "pushing docker images ... "
             withCredentials([usernamePassword(credentialsId: 'docker-hub-login', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                echo "login to dockerhub images repos"
                sh "echo $PASSWORD | docker login -u $USERNAME --password-stdin"
                echo "push the images to dockerhub"
                sh "docker push my-repo/my-repo:java-1.0"
-              }         
+              }    
+        }
+                 
         }
     }
 }
