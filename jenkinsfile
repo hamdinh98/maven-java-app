@@ -26,7 +26,7 @@ pipeline {
                echo "login to dockerhub images repos"
                sh "echo $PASSWORD | docker login -u $USERNAME --password-stdin"
                echo "push the images to dockerhub"
-               sh "docker push my-repo/my-repo:java-1.0"
+               sh "docker push hamdinh98/my-repo:java-1.0"
               }    
         }
                  
