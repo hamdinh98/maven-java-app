@@ -22,7 +22,7 @@ pipeline {
         {
          steps{
          echo "pushing docker images ... "
-            withDockerRegistry([usernamePassword(credentialsId: 'docker-hub-login', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+            withCredentials([usernamePassword(credentialsId: 'docker-hub-login', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                echo "login to dockerhub images repos"
                sh "echo $PASSWORD | docker login -u $USERNAME --password-stdin"
                echo "push the images to dockerhub"
