@@ -18,6 +18,12 @@ pipeline {
           }
         }
         stage('build-jar') {
+
+         when{
+                     expression{
+                     BRANCH_NAME = "master"
+                     }
+                  }
             steps {
                 echo 'building maven project'
                 sh "mvn package"
@@ -25,6 +31,11 @@ pipeline {
         }
         stage("build docker image")
         {
+         when{
+                     expression{
+                     BRANCH_NAME = "master"
+                     }
+                  }
             steps{
                echo "building docker images"
                sh "docker build -t hamdinh98/my-repo:java-1.0 ."
@@ -32,6 +43,12 @@ pipeline {
         }
         stage("pushing docker image to dockerhub")
         {
+
+         when{
+                     expression{
+                     BRANCH_NAME = "master"
+                     }
+                  }
          steps{
          echo "pushing docker images ... "
             withCredentials([usernamePassword(credentialsId: 'docker-hub-login', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
