@@ -4,6 +4,19 @@ pipeline {
     maven "maven-3.8.6"
     }
     stages {
+
+        stage("test the app")
+        {
+          when{
+             expression{
+             BRANCH_NAME = "feature/Auth"
+             }
+          }
+          steps{
+            echo "testing the app ..."
+
+          }
+        }
         stage('build-jar') {
             steps {
                 echo 'building maven project'
@@ -14,8 +27,7 @@ pipeline {
         {
             steps{
                echo "building docker images"
-               sh "docker build -t hamdinh98/my-repo:java-1.0 ."  
-              
+               sh "docker build -t hamdinh98/my-repo:java-1.0 ."
             }
         }
         stage("pushing docker image to dockerhub")
