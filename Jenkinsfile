@@ -7,16 +7,17 @@ pipeline {
 
         stage("test the app")
         {
-          /*when{
+          when{
              expression{
              BRANCH_NAME = "feature/Auth"
              }
-          }*/
-          steps{
+              steps{
             echo "testing the app ..."
             echo "${BRANCH_NAME}"
 
           }
+          }
+          
         }
         stage('build-jar') {
 
