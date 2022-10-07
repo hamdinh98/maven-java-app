@@ -11,11 +11,11 @@ pipeline {
              expression{
              branch "feature/Auth"
              }
-              steps{
+          }
+                 steps{
             echo "testing the app ..."
             echo "${BRANCH_NAME}"
 
-          }
           }
           
         }
