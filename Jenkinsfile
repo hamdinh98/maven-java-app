@@ -9,7 +9,7 @@ pipeline {
         {
           when{
              expression{
-             BRANCH_NAME = "feature/Auth"
+             branch "feature/Auth"
              }
               steps{
             echo "testing the app ..."
