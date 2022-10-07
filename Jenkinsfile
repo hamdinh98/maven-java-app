@@ -16,8 +16,6 @@ pipeline {
           }
                  steps{
             echo "testing the app ..."
-            echo "${BRANCH_NAME}"
-
           }
           
         }
