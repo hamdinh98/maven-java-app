@@ -1,3 +1,4 @@
+@Library('jenkins-shared-library')
 pipeline {
     agent any
     tools{
@@ -22,25 +23,25 @@ pipeline {
         stage('build-jar') {
 
          when{
-                     expression{
-                     BRANCH_NAME = "master"
+               expression{
+                     branch "master"
                      }
                   }
             steps {
                 echo 'building maven project'
-                sh "mvn package"
+                buildJar()
             }
         }
         stage("build docker image")
         {
          when{
                      expression{
-                     BRANCH_NAME = "master"
+                     branch "master"
                      }
                   }
             steps{
                echo "building docker images"
-               sh "docker build -t hamdinh98/my-repo:java-1.0 ."
+               buildImage()
             }
         }
         stage("pushing docker image to dockerhub")
@@ -48,7 +49,7 @@ pipeline {
 
          when{
                      expression{
-                     BRANCH_NAME = "master"
+                     branch "master"
                      }
                   }
          steps{
