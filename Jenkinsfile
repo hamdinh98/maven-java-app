@@ -40,7 +40,7 @@ pipeline {
                   }
             steps{
                echo "building docker images"
-               buildImage()
+               buildImage("hamdinh98/my-repo:java-1.0")
             }
         }
         stage("pushing docker image to dockerhub")
