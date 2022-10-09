@@ -11,7 +11,7 @@ pipeline {
         {
             steps{
                 script{
-                sh 'mvn build-helper:parse-version version:set \
+                sh 'mvn org.codehaus.mojo:build-helper-maven-plugin:3.3.0:parse-version version:set \
                     -DnewVersion=\\\${parsedVersion.majorVersion}.\\\${parsedVersion.minorVersion}.\\\${parsedVersion.nextIncrementalVersion} \
                     versions:commit'
                 def matcher =  readFile('pom.xml')=~'<version>(.+)</version>'
