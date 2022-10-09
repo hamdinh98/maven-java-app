@@ -24,7 +24,6 @@
             </plugin>
                  <plugin>
                 <groupId>org.codehaus.mojo</groupId>
-                          <name>app verionning</name>
                 <artifactId>build-helper-maven-plugin</artifactId>
                           <prefix>build-helper</prefix>
                 <version>3.3.0</version>
