@@ -6,8 +6,17 @@ pipeline {
     maven "maven"
     }
     stages {
-
-        stage("test the app")
+        
+        stage("Increment version")
+        {
+            steps{
+                sh "mvn build-helper:parse-version version:set -DnewVersion=${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.nextIncrementalVersion} versions:commit"
+                def matcher =  readFile('pom.xml')=~'<version>(.+)</version>'
+                def version = matcher[0][1]
+                env.IMAGE_NAME= "$version-$BUILD-NUMBER"
+            }
+        }
+        stage("stage for feature/Auth")
         {
           when{
              expression{
@@ -20,7 +29,6 @@ pipeline {
           
         }
         stage('build-jar') {
-
          when{
                expression{
                      branch "master"
@@ -29,6 +37,14 @@ pipeline {
             steps {
                 echo 'building maven project'
                 buildJar()
+            }
+        }
+        
+        stage('Unit test')
+        {
+            steps{
+                echo " testing the app .."
+                sh "mvn test"
             }
         }
         stage("build docker image")
@@ -40,7 +56,7 @@ pipeline {
                   }
             steps{
                echo "building docker images"
-               buildImage("hamdinh98/my-repo:java-1.0")
+                buildImage("hamdinh98/my-repo:java-${IMAGE_NAME}")
             }
         }
         stage("pushing docker image to dockerhub")
@@ -57,7 +73,7 @@ pipeline {
                echo "login to dockerhub images repos"
                sh "echo $PASSWORD | docker login -u $USERNAME --password-stdin"
                echo "push the images to dockerhub"
-               sh "docker push hamdinh98/my-repo:java-1.0"
+               sh "docker push hamdinh98/my-repo:java-${IMAGE_NAME}"
               }    
         }
                  
