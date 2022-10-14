@@ -32,9 +32,14 @@
                 </configuration>
             </plugin> 
             <plugin>
-               <prefix>build-helper</prefix>
-               <artifactId>build-helper-maven-plugin</artifactId>
-            </plugin>
+                             <groupId>org.codehaus.mojo</groupId>
+                             <artifactId>build-helper-maven-plugin</artifactId>
+                
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin> 
             <!-- to handle any Java version mismatch, add the following configuration for maven-compiler-plugin -->       
         </plugins>
     </build>
