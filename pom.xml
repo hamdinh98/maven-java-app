@@ -31,7 +31,11 @@
                     <target>1.8</target>
                 </configuration>
             </plugin> 
-
+            <plugin>
+               <name>Maven Plugin</name>
+               <prefix>build-helper</prefix>
+               <artifactId>build-helper-maven-plugin</artifactId>
+            </plugin>
             <!-- to handle any Java version mismatch, add the following configuration for maven-compiler-plugin -->       
         </plugins>
     </build>
