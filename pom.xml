@@ -32,7 +32,6 @@
                 </configuration>
             </plugin> 
             <plugin>
-               <name>Maven Plugin</name>
                <prefix>build-helper</prefix>
                <artifactId>build-helper-maven-plugin</artifactId>
             </plugin>
