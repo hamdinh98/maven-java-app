@@ -6,7 +6,7 @@ pipeline {
     maven "maven"
     }
     stages {
-        stage("Increment version"){
+        stage("test maven"){
             steps{
                 sh "mvn -version" 
             }
