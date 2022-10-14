@@ -34,8 +34,10 @@
             <plugin>
                              <groupId>org.codehaus.mojo</groupId>
                              <artifactId>build-helper-maven-plugin</artifactId>
+                             
                 
                 <configuration>
+                          <goalPrefix>build-helper</goalPrefix>
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
