@@ -87,5 +87,21 @@ pipeline {
         }
                  
         }
+        stage("commit version update")
+        {
+            steps{
+                script{
+                    withCredentials([string(credentialsId: 'jenkins-github-auth', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                        sh 'git config --global user.email "hamdi.nahdi@esprit.tn"'
+                        sh 'git config --global user.name "hamdinh98"'
+                        sh 'git config --list'
+                        sh 'git remote set-url origin master https://${USERNAME}:${PASSWORD}@github.com/hamdinh98/maven-java-app'
+                        sh 'git add .'
+                        sh 'git commit -m "update project version"'
+                        sh 'git push origin master'
+                    }
+                }
+            }
+        }
     }
 }
