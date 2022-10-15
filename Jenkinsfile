@@ -91,7 +91,7 @@ pipeline {
         {
             steps{
                 script{
-                    withCredentials([string(credentialsId: 'jenkins-github-auth', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    withCredentials([usernamePassword(credentialsId: 'jenkins-github-auth', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         sh 'git config --global user.email "hamdi.nahdi@esprit.tn"'
                         sh 'git config --global user.name "hamdinh98"'
                         sh 'git config --list'
