@@ -99,7 +99,7 @@ pipeline {
                         sh 'git add .'
                         sh 'git commit -m "update project version"'
                         sh 'git branch'
-                        sh 'git push origin HEAD:master'
+                        sh 'git push -o ci.skip origin HEAD:master '
                     }
                 }
             }
