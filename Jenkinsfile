@@ -96,7 +96,7 @@ pipeline {
                         sh 'git config --global user.name "hamdinh98"'
                         sh 'git config --list'
                         sh '${USERNAME}-${PASSWORD}'
-                        sh 'git remote set-url origin  https://${USERNAME}:${PASSWORD}@github.com/hamdinh98/maven-java-app'
+                        sh 'git remote set-url origin  https://hamdinh98:ma9rounabnina@github.com/hamdinh98/maven-java-app'
                         sh 'git add .'
                         sh 'git commit -m "update project version"'
                         sh 'git push origin master'
