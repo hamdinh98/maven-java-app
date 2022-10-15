@@ -42,12 +42,6 @@
           <goal>parse-version</goal>
         </goals>
       </execution>
-      <execution>
-        <id>version-set</id>
-        <goals>
-          <goal>version:set</goal>
-        </goals>
-      </execution>
     </executions>
   </plugin>
   <plugin>
