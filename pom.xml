@@ -40,7 +40,6 @@
         <id>parse-version</id>
         <goals>
           <goal>parse-version</goal>
-          <goal>version</goal>
         </goals>
       </execution>
     </executions>
