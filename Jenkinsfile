@@ -6,6 +6,7 @@ pipeline {
     maven "maven"
     }
     stages {
+       
         stage("Increment version")
         {
             steps{
